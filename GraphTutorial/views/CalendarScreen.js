@@ -33,7 +33,6 @@ export default class CalendarScreen extends React.Component {
   async componentDidMount() {
     try {
       const events = await GraphManager.getEvents();
-
       this.setState({
         loadingEvents: false,
         events: events.value

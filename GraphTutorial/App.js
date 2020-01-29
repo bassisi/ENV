@@ -8,6 +8,7 @@ import {
 import AuthLoadingScreen from './views/AuthLoadingScreen';
 import SignInScreen from './views/SignInScreen';
 import HomeScreen from './views/HomeScreen';
+import ActivityScreen from './views/ActivityScreen';
 import CalendarScreen from './views/CalendarScreen';
 import DrawerMenuContent from './menus/DrawerMenu';
 
@@ -30,11 +31,12 @@ const AuthStack = createStackNavigator(
 const AppDrawer = createDrawerNavigator(
   {
     Home: createStackNavigator({ Home: HomeScreen }, headerOptions),
+    Activity: createStackNavigator({ Activity: ActivityScreen }, headerOptions),
     Calendar: createStackNavigator({ Calendar: CalendarScreen }, headerOptions),
     'Sign Out': 'SignOut'
   },
   {
-    hideStatusBar: false,
+    hideStatusBar: true,
     contentComponent: DrawerMenuContent
   }
 );

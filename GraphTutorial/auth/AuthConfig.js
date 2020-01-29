@@ -5,6 +5,7 @@ export const AuthConfig = {
     'offline_access',
     'profile',
     'User.Read',
-    'Calendars.Read'
+    'Calendars.Read',
+    'Sites.Manage.All'
   ]
 };

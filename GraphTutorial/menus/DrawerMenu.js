@@ -54,7 +54,7 @@ export default class DrawerMenuContent extends React.Component {
     return (
       <ScrollView>
         <SafeAreaView style={styles.container}
-          forceInset={{ top: 'always', horizontal: 'never' }}>
+          forceInset={{ horizontal: 'never' }}>
           <View style={styles.profileView}>
             <Image source={this.state.userPhoto}
               resizeMode='contain'
@@ -79,9 +79,8 @@ const styles = StyleSheet.create({
     padding: 10
   },
   profilePhoto: {
-    width: 80,
-    height: 80,
-    borderRadius: 40
+    width: 100,
+    height: 100,
   },
   profileUserName: {
     fontWeight: '700'
