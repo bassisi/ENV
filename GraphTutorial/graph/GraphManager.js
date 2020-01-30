@@ -17,14 +17,14 @@ export class GraphManager {
   }
 
   static getTareas = async() => {
-    // GET /sites/grupoenvision.sharepoint.com:/sites/demos/AprobacionMovil:/lists/Tarea/items?expand=fields(select=Title, Estado)
-    return graphClient.api('/sites/grupoenvision.sharepoint.com:/sites/demos/AprobacionMovil:/lists/Tarea/items?expand=fields')
+    // GET /sites/grupoenvision.sharepoint.com:/sites/demos/AprobacionMovil:/lists/Tarea/items?expand=fields&$filter=fields/Estado eq 'Pendiente'
+    return graphClient.api("/sites/grupoenvision.sharepoint.com:/sites/demos/AprobacionMovil:/lists/Tarea/items?expand=fields&$filter=fields/Estado eq 'Pendiente'")
     .get();
   }
 
-  static patchTareas = async(itemId) => {
+  static patchTareas = async(itemId, estado) => {
     const fieldValueSet = {
-      Estado: "Aprobada"
+      Estado: estado
   };
     return graphClient.api('/sites/grupoenvision.sharepoint.com:/sites/demos/AprobacionMovil:/lists/Tarea/items/'+itemId+'/fields')
     .update(fieldValueSet);
@@ -32,10 +32,6 @@ export class GraphManager {
 
   static getEvents = async() => {
     // GET /me/events
-    alert(JSON.stringify(await graphClient.api('/me/events')
-    .select('subject,organizer,start,end')
-    .orderby('createdDateTime DESC')
-    .get()));
     return graphClient.api('/me/events')
       // $select='subject,organizer,start,end'
       // Only return these fields in results
